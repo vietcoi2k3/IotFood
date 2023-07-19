@@ -7,13 +7,20 @@
  */
 
 import React from 'react';
-import { View,Text } from 'react-native';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import Login from './src/components/login';
+import Register from './src/components/Register';
 
-const App =()=>{
-  return(
-    <View  className="flex justify-center">
-       <Text className="text-orange-700 ">HomeScreen</Text>
-    </View>
+const Stack = createNativeStackNavigator();
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+          <Stack.Screen name="Login" component ={Login}  />
+          <Stack.Screen name="Login" component ={Register}  />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
