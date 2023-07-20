@@ -7,24 +7,34 @@
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text , StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
-import Login from './src/components/login';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Login from './src/components/Login';
 import Register from './src/components/Register';
+
+import Color from './src/untils/color'
 
 const Stack = createNativeStackNavigator();
 const App = () => {
+  console.log(Color.purple)
   return (
     <NavigationContainer>
       <Stack.Navigator>
           <Stack.Screen name="Login" component ={Login}  />
-          <Stack.Screen name="Login" component ={Register}  />
+          <Stack.Screen name="Register" component ={Register}  />
       </Stack.Navigator>
     </NavigationContainer>
+   
   )
 }
 
-
+const style = StyleSheet.create({
+    text:{
+      color:Color.red,
+    }
+})
 
 
 
