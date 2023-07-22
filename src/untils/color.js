@@ -1,9 +1,9 @@
-const purple = "text-[#4E399E]"
-const red ="text-[#E45552]"
-const textBold = "text-[#3A3A3A]"
-const textBlur ="text-[#292929]"
-const textHolder = "text-[#C0C0C0]"
-const backgroundColor = 'text-[#fff]'
+const purple = "text-[#4e399e]"
+const red ="text-[#e45552]"
+const textBold = "text-[#3a3a3a]"
+const textBlur ="text-{#292929}"
+const textHolder = "text-[#c0c0c0]"
+const backgroundColor = 'text-white'
 
 const Color = {
     purple,

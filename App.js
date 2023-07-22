@@ -7,8 +7,11 @@
  */
 
 import React from 'react';
-import { View, Text , StyleSheet} from 'react-native';
+import { View, Text , StyleSheet,Image,TextInput,ScrollView,Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
+import 'react-native-gesture-handler'
+
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './src/components/Login';
@@ -16,14 +19,15 @@ import Register from './src/components/Register';
 
 import Color from './src/untils/color'
 
+
+
 const Stack = createNativeStackNavigator();
 const App = () => {
-  console.log(Color.purple)
   return (
     <NavigationContainer>
       <Stack.Navigator>
-          <Stack.Screen name="Login" component ={Login}  />
-          <Stack.Screen name="Register" component ={Register}  />
+          <Stack.Screen name="Login" component ={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Register" component ={Register} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
    
