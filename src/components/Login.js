@@ -52,24 +52,25 @@ const Login = ({navigation})=>{
                 className ={`bg-[#e45552] p-2 rounded w-full`}
                 
             >
-                <Text className={`text-white text-lg font-semibold text-center`}>Đăng kí</Text>
+                <Text className={`text-white text-lg font-semibold text-center`}>Đăng nhập</Text>
             </TouchableOpacity>
             </View>
 
 
-            <View className={`flex items-center justify-center `}>
+            <View className={`flex items-center justify-center mt-40`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
                     navigation.navigate('Register')
                 }}
             >
-                <Text className={`text-white text-lg font-semibold text-center`}>Tạo tài khoản mới</Text>
+                <Text className={`text-white text-lg font-semibold text-center`}>Tạo tài khoản mới</Text>               
             </TouchableOpacity>
+            <Text className={`text-center ${Color.textBlur} text-xs mt-2`}>Vận hành bởi IOT-SOUP 2023</Text>
             </View>
 
 
-            <Text className={`text-center ${Color.textBlur} mt-12 text-xs`}>Vận hành bởi IOT-SOUP 2023</Text>
+          
         
             </ScrollView>
        )
