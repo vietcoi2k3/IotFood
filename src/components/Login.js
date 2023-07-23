@@ -3,7 +3,9 @@ import 'react-native-gesture-handler'
 import myImage from '../assets/img/Group_4.png'
 import Color from '../untils/color'
 import untils from '../untils/untils'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios';
+
 
 const Login = ({navigation})=>{
     const [maSv,setMaSv] =useState("");
@@ -13,6 +15,7 @@ const Login = ({navigation})=>{
 
     const [errMasv, setErrMasv] = useState(false);
     const [errPass, setErrPass] = useState(false);
+
 
        return( 
         <ScrollView className='mx-4 my-4'>
@@ -29,7 +32,6 @@ const Login = ({navigation})=>{
                     onChangeText={(e)=> {
                         untils.validateMaSV(e,setErrMessMasv,setErrMasv);
                         setMaSv(e)
-                        console.log(errMasv)
                     }}
                     value={maSv}
                 />
@@ -50,14 +52,14 @@ const Login = ({navigation})=>{
             <View className={`flex items-center justify-center mb-16 `}>
              <TouchableOpacity
                 className ={`bg-[#e45552] p-2 rounded w-full`}
-                
+                // onPress={HandleLogin}
             >
                 <Text className={`text-white text-lg font-semibold text-center`}>Đăng nhập</Text>
             </TouchableOpacity>
             </View>
 
 
-            <View className={`flex items-center justify-center mt-40`}>
+            <View className={`flex items-center justify-center mt-12`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
@@ -66,12 +68,9 @@ const Login = ({navigation})=>{
             >
                 <Text className={`text-white text-lg font-semibold text-center`}>Tạo tài khoản mới</Text>               
             </TouchableOpacity>
-            <Text className={`text-center ${Color.textBlur} text-xs mt-2`}>Vận hành bởi IOT-SOUP 2023</Text>
+            <Text className={`text-center ${Color.textBlur} text-xs mt-1`}>Vận hành bởi IOT-SOUP 2023</Text>
             </View>
 
-
-          
-        
             </ScrollView>
        )
  }

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import { View, Text , StyleSheet,Image,TextInput,ScrollView,Button} from 'react-native';
+import { View, Text , StyleSheet,Image,TextInput,ScrollView,Button, Dimensions} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import 'react-native-gesture-handler'
 
@@ -23,6 +23,7 @@ import Color from './src/untils/color'
 
 const Stack = createNativeStackNavigator();
 const App = () => {
+  console.log(Dimensions.get('window').height)
   return (
     <NavigationContainer>
       <Stack.Navigator>
