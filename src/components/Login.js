@@ -1,21 +1,22 @@
-import { View, Text , StyleSheet,Image,TextInput,ScrollView,Button,TouchableOpacity} from 'react-native';
+import { View, Text , StyleSheet,Image,TextInput,ScrollView,Button,TouchableOpacity, Dimensions} from 'react-native';
 import 'react-native-gesture-handler'
 import myImage from '../assets/img/Group_4.png'
 import Color from '../untils/color'
 import untils from '../untils/untils'
 import React,{useState} from 'react'
 
+
 const Login = ({navigation})=>{
     const [maSv,setMaSv] =useState("");
     const [pass, setPass] = useState("");
     const [errMessMasv, setErrMessMasv] = useState("");
     const [errMessPass, setErrMessPass] = useState("");
-
     const [errMasv, setErrMasv] = useState(false);
     const [errPass, setErrPass] = useState(false);
-
+    const[sm,md]=untils.calculateScreenSizes()
+    console.log(sm)
        return( 
-        <ScrollView className='mx-4 my-4'>
+        <ScrollView className='mx-4 my-4 flex-1'>
             <View className ='mx-auto my-auto underline'>
                 <Image source={myImage} className='object-cover rounded-full'/>
                 <Text className={` font-bold text-4xl ${Color.textBold}`}>Chào Mừng!</Text>
@@ -47,7 +48,7 @@ const Login = ({navigation})=>{
                 <Text className='text-[#ed1818]'>{errMessPass}</Text>
             </View>
 
-            <View className={`flex items-center justify-center mb-16 `}>
+            <View className={`flex items-center justify-center `}>
              <TouchableOpacity
                 className ={`bg-[#e45552] p-2 rounded w-full`}
                 
@@ -57,7 +58,7 @@ const Login = ({navigation})=>{
             </View>
 
 
-            <View className={`flex items-center justify-center mt-40`}>
+            <View className={`flex items-center float-bottom ${sm?'mt-28':''} ${md?'mt-56':''}`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
@@ -69,9 +70,6 @@ const Login = ({navigation})=>{
             <Text className={`text-center ${Color.textBlur} text-xs mt-2`}>Vận hành bởi IOT-SOUP 2023</Text>
             </View>
 
-
-          
-        
             </ScrollView>
        )
  }

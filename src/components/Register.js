@@ -3,9 +3,9 @@ import {View,Text} from 'react-native'
 
 const Register = ()=>{
     return(
-        <View>
-            <Text>Day la dang ki</Text>
-        </View>
+       <View className="flex-1">
+            <Text>dsadsads</Text>
+       </View>
     )
 }
 
