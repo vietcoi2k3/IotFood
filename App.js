@@ -23,15 +23,15 @@ import Color from './src/untils/color'
 
 const Stack = createNativeStackNavigator();
 const App = () => {
-  console.log(Dimensions.get('window').height)
   return (
+
     <NavigationContainer>
       <Stack.Navigator>
           <Stack.Screen name="Login" component ={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component ={Register} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
-   
+
   )
 }
 
