@@ -14,7 +14,6 @@ const Login = ({navigation})=>{
     const [errMasv, setErrMasv] = useState(false);
     const [errPass, setErrPass] = useState(false);
     const[sm,md]=untils.calculateScreenSizes()
-    console.log(sm)
        return( 
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className ='mx-auto my-auto underline'>
@@ -58,7 +57,7 @@ const Login = ({navigation})=>{
             </View>
 
 
-            <View className={`flex items-center float-bottom ${sm?'mt-28':''} ${md?'mt-56':''}`}>
+            <View className={`flex items-center ${sm?'mt-28':''} ${md?'mt-56':''}`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
