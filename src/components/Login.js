@@ -78,7 +78,7 @@ const Login = ({navigation})=>{
             </View>
 
 
-            <View className={`flex items-center float-bottom ${sm?'mt-28':''} ${md?'mt-56':''}`}>
+            <View className={`flex items-center ${sm?'mt-28':''} ${md?'mt-56':''}`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
