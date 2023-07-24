@@ -16,6 +16,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './src/components/Login';
 import Register from './src/components/Register';
+import Home from "./src/components/Home"
 
 import Color from './src/untils/color'
 
@@ -29,6 +30,7 @@ const App = () => {
       <Stack.Navigator>
           <Stack.Screen name="Login" component ={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component ={Register} options={{ headerShown: false }} />
+          <Stack.Screen name="Home" component ={Home} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

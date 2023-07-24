@@ -4,6 +4,8 @@ import myImage from '../assets/img/Group_4.png'
 import Color from '../untils/color'
 import untils from '../untils/untils'
 import React,{useState} from 'react'
+import axios from 'axios';
+
 
 const Login = ({navigation})=>{
     const [maSv,setMaSv] =useState("");
@@ -12,6 +14,27 @@ const Login = ({navigation})=>{
     const [errMessPass, setErrMessPass] = useState("");
     const [errMasv, setErrMasv] = useState(false);
     const [errPass, setErrPass] = useState(false);
+
+    const[sm,md]=untils.calculateScreenSizes()
+
+    const handleLogin = ()=>{
+        const urlApi = "https://server-iot-food.onrender.com/auth/login"
+        const dataToSend ={
+            "username": maSv,
+            "password": pass,
+        }
+        axios.post(urlApi, dataToSend)
+        .then(response => {
+            console.log(response.data.status)
+            if(response.data.status === true){
+                navigation.navigate('Home')
+            }
+        })
+        .catch(error => {
+          console.error('Error sending POST request:', error);
+        });
+    };
+    
 
        return( 
         <ScrollView className='mx-4 my-4 flex-1'>
@@ -48,14 +71,14 @@ const Login = ({navigation})=>{
             <View className={`flex items-center justify-center `}>
              <TouchableOpacity
                 className ={`bg-[#e45552] p-2 rounded w-full`}
-                // onPress={HandleLogin}
+                onPress={handleLogin}
             >
                 <Text className={`text-white text-lg font-semibold text-center`}>Đăng nhập</Text>
             </TouchableOpacity>
             </View>
 
 
-            <View className={`flex items-center justify-center mt-40`}>
+            <View className={`flex items-center float-bottom ${sm?'mt-28':''} ${md?'mt-56':''}`}>
              <TouchableOpacity
                 className ={`bg-[#4e399e] p-2 rounded w-full`}
                 onPress={() => {
@@ -69,6 +92,5 @@ const Login = ({navigation})=>{
 
             </ScrollView>
        )
- }
-
+          }
  export default Login;
