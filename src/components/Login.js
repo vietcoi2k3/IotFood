@@ -4,6 +4,7 @@ import myImage from '../assets/img/Group_4.png'
 import Color from '../untils/color'
 import untils from '../untils/untils'
 import React,{useState} from 'react'
+import axios from 'axios';
 
 
 const Login = ({navigation})=>{
@@ -13,7 +14,28 @@ const Login = ({navigation})=>{
     const [errMessPass, setErrMessPass] = useState("");
     const [errMasv, setErrMasv] = useState(false);
     const [errPass, setErrPass] = useState(false);
+
     const[sm,md]=untils.calculateScreenSizes()
+
+    const handleLogin = ()=>{
+        const urlApi = "https://server-iot-food.onrender.com/auth/login"
+        const dataToSend ={
+            "username": maSv,
+            "password": pass,
+        }
+        axios.post(urlApi, dataToSend)
+        .then(response => {
+            console.log(response.data.status)
+            if(response.data.status === true){
+                navigation.navigate('Home')
+            }
+        })
+        .catch(error => {
+          console.error('Error sending POST request:', error);
+        });
+    };
+    
+
        return( 
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className ='mx-auto my-auto underline'>
@@ -29,7 +51,6 @@ const Login = ({navigation})=>{
                     onChangeText={(e)=> {
                         untils.validateMaSV(e,setErrMessMasv,setErrMasv);
                         setMaSv(e)
-                        console.log(errMasv)
                     }}
                     value={maSv}
                 />
@@ -50,7 +71,7 @@ const Login = ({navigation})=>{
             <View className={`flex items-center justify-center `}>
              <TouchableOpacity
                 className ={`bg-[#e45552] p-2 rounded w-full`}
-                
+                onPress={handleLogin}
             >
                 <Text className={`text-white text-lg font-semibold text-center`}>Đăng nhập</Text>
             </TouchableOpacity>
@@ -66,11 +87,10 @@ const Login = ({navigation})=>{
             >
                 <Text className={`text-white text-lg font-semibold text-center`}>Tạo tài khoản mới</Text>               
             </TouchableOpacity>
-            <Text className={`text-center ${Color.textBlur} text-xs mt-2`}>Vận hành bởi IOT-SOUP 2023</Text>
+            <Text className={`text-center ${Color.textBlur} text-xs mt-1`}>Vận hành bởi IOT-SOUP 2023</Text>
             </View>
 
             </ScrollView>
        )
- }
-
+          }
  export default Login;
