@@ -5,6 +5,8 @@ import Color from '../untils/color'
 import untils from '../untils/untils'
 import React,{useState} from 'react'
 import axios from 'axios';
+import AuthApi from '../api/AuthApi';
+import ManagerApi from '../api/ManagerApi';
 
 
 const Login = ({navigation})=>{
@@ -17,17 +19,18 @@ const Login = ({navigation})=>{
 
     const[sm,md]=untils.calculateScreenSizes()
 
-    const handleLogin = ()=>{
-        const urlApi = "https://server-iot-food.onrender.com/auth/login"
+    const handleLogin = async ()=>{
+        const urlApi = AuthApi.login
+        // console.log(urlApi)
         const dataToSend ={
             "username": maSv,
             "password": pass,
         }
-        axios.post(urlApi, dataToSend)
+        const response= ManagerApi.post(urlApi, dataToSend)
         .then(response => {
-            console.log(response.data.status)
+            console.log(response.data)
             if(response.data.status === true){
-                navigation.navigate('Home')
+                navigation.replace('Home')
             }
         })
         .catch(error => {
