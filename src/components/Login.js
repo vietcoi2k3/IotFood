@@ -18,6 +18,9 @@ const Login = ({navigation})=>{
     const[sm,md]=untils.calculateScreenSizes()
 
     const handleLogin = ()=>{
+        if(errMasv || errPass ){
+            console.log("Nhap sai thong tin");
+        }else{
         const urlApi = "https://server-iot-food.onrender.com/auth/login"
         const dataToSend ={
             "username": maSv,
@@ -33,6 +36,7 @@ const Login = ({navigation})=>{
         .catch(error => {
           console.error('Error sending POST request:', error);
         });
+        }
     };
     
 
