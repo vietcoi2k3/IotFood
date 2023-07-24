@@ -36,6 +36,7 @@ const Login = ({navigation})=>{
         .catch(error => {
           console.error('Error sending POST request:', error);
         });
+        }
     };
     
 
