@@ -1,5 +1,6 @@
 // api.js
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const ManagerApi = axios.create({
@@ -9,7 +10,19 @@ const ManagerApi = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
+ManagerApi.interceptors.request.use(
+  // async (config) => {
+  //   // Kiểm tra và gắn token vào header nếu có
+  //   const token = AsyncStorage.getItem("AccessToken"); 
+  //   if (token) {
+  //     config.headers['Authorization'] = `Bearer ${token}`;
+  //   }
+  //   return config;
+  // },
+  // (error) => {
+  //   return Promise.reject(error);
+  // }
+);
 
 
 export default ManagerApi;

@@ -23,6 +23,8 @@ const Register = () => {
     const [errMessCfPass, setErrMessCfPass] = useState("");
     const [errCfPass, setErrCfPass] = useState(false);
 
+    const[sm,md]=untils.calculateScreenSizes()
+
     return (
         <ScrollView className="flex-1 mx-4 my-4 flex">
             {/* Phần logo và tiêu đề */}
@@ -33,7 +35,7 @@ const Register = () => {
             </View>
 
             {/* Phần thông tin cá nhân */}
-            <View>
+            <View className="mt-2">
             <Text className='font-bold text-base ${Color.textBold}'>Thông tin cá nhân: </Text>
                 <TextInput 
                     placeholder='Họ và tên' 
@@ -98,7 +100,9 @@ const Register = () => {
             </TouchableOpacity>
 
             {/* Chú thích về tác giả */}
-            <Text className={`text-center ${Color.textBlur} text-xs mt-1`}>Vận Hành Bởi IOT-SOUP 2023</Text>
+            <View>
+                <Text className={`text-center ${Color.textBlur} text-xs mt-1 ${sm?"mt-12":""} ${md?"mt-28":""}`}>Vận Hành Bởi IOT-SOUP 2023</Text>
+            </View>
        </ScrollView>
     )
 }
