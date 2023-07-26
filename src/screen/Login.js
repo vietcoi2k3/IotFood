@@ -81,13 +81,14 @@ const Login = ({ navigation }) => {
                     onChangeText={(e) => {
                         untils.validateMaSV(e, setErrMessMasv, setErrMasv);
                         setMaSv(e)
+                        setErrForm(false);
                     }}
                     value={maSv}
                 />
                 <Text className='text-[#ed1818]'>{errForm ?  errMessMasv : ""}</Text>
                 
                 <Text className='font-bold text-base ${Color.textBold}'>Mật khẩu: </Text>
-                <InputSecure placeholder={"Nhập mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err ={errPass} errMess={errMessPass} value={pass}  setValue={setPass} errForm={errForm} isLogin={isLogin}/>
+                <InputSecure placeholder={"Nhập mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err ={errPass} errMess={errMessPass} value={pass}  setValue={setPass} errForm={errForm} setErrForm={setErrForm} isLogin={isLogin}/>
             </View>
 
             <View className={`flex items-center justify-center `}>

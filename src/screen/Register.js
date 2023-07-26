@@ -101,9 +101,7 @@ const Register = ({navigation}) => {
             <View>
                 <Text className={'font-bold text-base ${Color.textBold}'}>Mật khẩu:</Text>
                 <InputSecure placeholder={"Mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err={errPass} errMess={errMessPass} value={pass} setValue={setPass}/>
-                {/* <Text className='text-[#ed1818]'>{errMessPass}</Text> */}
                 <InputSecure placeholder={"Xác nhập lại mật khẩu"} setErrMess={setErrMessCfPass} setErr={setErrCfPass} err={errPass} errMess={errMessCfPass} value={cfPass} setValue={setCfPass}/>
-                {/* <Text className='text-[#ed1818]'>{errMessCfPass}</Text> */}
             </View>
 
             {/* Nút đăng kí */}

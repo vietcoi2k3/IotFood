@@ -3,7 +3,7 @@ import {useState} from "react"
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import untils from "../untils/untils";
 
-const InputSecure = ({placeholder,setErrMess,setErr,err,errMess,value,setValue,errForm,isLogin,...props})=>{
+const InputSecure = ({placeholder,setErrMess,setErr,err,errMess,value,setValue,errForm = false,setErrForm = ()=>{} ,isLogin,...props})=>{
     const [hidePassword,setHidePassword] = useState(false)
     return(
         <View className="relative">
@@ -14,6 +14,7 @@ const InputSecure = ({placeholder,setErrMess,setErr,err,errMess,value,setValue,e
             onChangeText={(e) => {
                 untils.validatePass(e, setErrMess, setErr)
                 setValue(e)
+                setErrForm(false)
             }}
             value={value}
         />
