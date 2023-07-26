@@ -14,9 +14,9 @@ import 'react-native-gesture-handler'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './src/components/Login';
-import Register from './src/components/Register';
-import Home from "./src/components/Home"
+import Login from './src/screen/Login';
+import Register from './src/screen/Register';
+import Home from "./src/screen/Home"
 
 import Color from './src/untils/color'
 

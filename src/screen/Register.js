@@ -3,8 +3,11 @@ import { View, Text, Image, TouchableOpacity, TextInput,ScrollView } from 'react
 import myImage from '../assets/img/Group_4.png';
 import Color from '../untils/color';
 import untils from '../untils/untils';
+import AuthApi from '../api/AuthApi';
+import ManagerApi from '../api/ManagerApi';
+import InputSecure from "../components/InputSecure";
 
-const Register = () => {
+const Register = ({navigation}) => {
     const [name,setName] = useState("");
 
     const [maSv,setMaSv] =useState("");
@@ -22,8 +25,33 @@ const Register = () => {
     const [cfPass, setCfPass] = useState("");
     const [errMessCfPass, setErrMessCfPass] = useState("");
     const [errCfPass, setErrCfPass] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const[sm,md]=untils.calculateScreenSizes()
+
+    const handleRegister = async ()=>{
+        if(!errMasv && !errPass && !errPhone && !errCfPass){
+        const apiUrl = AuthApi.register
+        const dataToSend = {
+           "username": maSv,
+           "password": pass,
+           "sdt" : phone,
+           "AccountName": name
+        }
+        ManagerApi.post(apiUrl,dataToSend)
+        .then(response => {
+            if (response.data.status === true) {
+                setIsLoading(true)
+                navigation.navigate('Home')
+            }
+        })
+        .catch(error => {
+            console.error('Error sending POST request:', error);
+        });
+        }else {
+            console.log("Khong hop le");
+        }
+    }
 
     return (
         <ScrollView className="flex-1 mx-4 my-4 flex">
@@ -72,36 +100,23 @@ const Register = () => {
             {/* Phần mật khẩu */}
             <View>
                 <Text className={'font-bold text-base ${Color.textBold}'}>Mật khẩu:</Text>
-                <TextInput  
-                    placeholder='Mật khẩu' 
-                    className={`placeholder:text-slate-400 block bg-white w-full border ${errPass? "border-[#ed1818]" : "border-slate-300"}  rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 sm:text-sm`}
-                    onChangeText={(e)=> {
-                        untils.validatePass(e,setErrMessPass,setErrPass)
-                        setPass(e)
-                    }}
-                    value={pass}
-                />
-                <Text className='text-[#ed1818]'>{errMessPass}</Text>
-                <TextInput  
-                    placeholder='Xác nhận lại mật khẩu' 
-                    className={`placeholder:text-slate-400 block bg-white w-full border ${errCfPass? "border-[#ed1818]" : "border-slate-300"}  rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 sm:text-sm`}
-                    onChangeText={(e)=> {
-                        untils.validateCfPass(e,pass,setErrCfPass,setErrMessCfPass)
-                        setCfPass(e)
-                    }}
-                    value={cfPass}
-                />
-                <Text className='text-[#ed1818]'>{errMessCfPass}</Text>
+                <InputSecure placeholder={"Mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err={errPass} errMess={errMessPass} value={pass} setValue={setPass}/>
+                {/* <Text className='text-[#ed1818]'>{errMessPass}</Text> */}
+                <InputSecure placeholder={"Xác nhập lại mật khẩu"} setErrMess={setErrMessCfPass} setErr={setErrCfPass} err={errPass} errMess={errMessCfPass} value={cfPass} setValue={setCfPass}/>
+                {/* <Text className='text-[#ed1818]'>{errMessCfPass}</Text> */}
             </View>
 
             {/* Nút đăng kí */}
-            <TouchableOpacity className={`bg-[#4e399e] p-2 rounded w-full`}>
+            <TouchableOpacity 
+            className={`bg-[#4e399e] p-2 rounded w-full`}
+            onPress={handleRegister}
+            >
                 <Text className={`text-white text-lg font-semibold text-center`}>Đăng kí</Text>
             </TouchableOpacity>
 
             {/* Chú thích về tác giả */}
             <View>
-                <Text className={`text-center ${Color.textBlur} text-xs mt-1 ${sm?"mt-12":""} ${md?"mt-28":""}`}>Vận Hành Bởi IOT-SOUP 2023</Text>
+                <Text className={`text-center ${Color.textBlur} text-xs mt-1 ${sm?"mt-1":""} ${md?"mt-28":""}`}>Vận Hành Bởi IOT-SOUP 2023</Text>
             </View>
        </ScrollView>
     )
