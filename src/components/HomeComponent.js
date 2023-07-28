@@ -4,6 +4,9 @@ import Color from '../untils/color'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DishComponent from "./DishComponent"
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import untils from '../untils/untils';
+
+const [sm, md] = untils.calculateScreenSizes()
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -28,7 +31,7 @@ const Home = ()=>{
             </View>
             <View className='mt-2'>
                 <Text className={`text-lg text-slate-950 font-semibold`}>Dành cho bạn: </Text>
-                <ScrollView className="h-52"  showsVerticalScrollIndicator>
+                <ScrollView className={`${sm ? 'h-52' : ''} ${md ? 'h-64' : ''}`}  showsVerticalScrollIndicator>
                     <DishComponent/>
                     <DishComponent/>
                     <DishComponent/>
@@ -51,7 +54,7 @@ const Home = ()=>{
                     </TouchableOpacity>
 
                 </View>
-                <View className={"mt-6"}>
+                <View className={`${sm ? 'mt-6' : ''} ${md ? 'mt-56' : ''}`}>
                     <TouchableOpacity className="w-48 bg-neutral-200 px-4 py-3 rounded-3xl mt-4 bg-[#4e399e] mx-auto my-auto">
                         <Text className="text-white text-xl font-bold text-center">Ăn gì cũng được</Text>
                     </TouchableOpacity>

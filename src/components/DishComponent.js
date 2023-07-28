@@ -1,9 +1,13 @@
 import {View,Text,Image} from "react-native"
 import noodle from "../assets/img/Pho.png"
 import Color from '../untils/color'
+import untils from '../untils/untils';
+
+const [sm, md] = untils.calculateScreenSizes()
+
 
 function DishComponent() {
-    return ( <View className="flex flex-row items-center bg-neutral-200 rounded-xl max-h-20 mb-2 shadow-md shadow-purple-400 ">
+    return ( <View className={`flex flex-row items-center bg-neutral-200 rounded-xl ${sm ? 'max-h-20' : ''} ${md ? 'mt-56' : ''} mb-2 shadow-md shadow-purple-400`}>
         <View className="basis-1/3">
             <Image source = {noodle} className="object-cover h-16 w-20 left-4 " resizeMode="cover"/>
         </View>

@@ -61,9 +61,9 @@ const Login = ({ navigation }) => {
             });
         }
     }
-    if (1) {
-        navigation.replace('MainScreen')
-    }
+    // if (1) {
+    //     navigation.replace('MainScreen')
+    // }
     return (
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
