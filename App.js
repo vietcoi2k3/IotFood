@@ -14,11 +14,12 @@ import 'react-native-gesture-handler'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './src/screen/Login';
-import Register from './src/screen/Register';
-import Home from "./src/screen/Home"
+import Login from './src/components/LoginComponent';
+import Register from './src/components/RegisterComponent';
+import Home from "./src/components/HomeComponent"
 
 import Color from './src/untils/color'
+import MainScreen from './src/screen/MainScreen';
 
 
 
@@ -30,7 +31,7 @@ const App = () => {
       <Stack.Navigator>
           <Stack.Screen name="Login" component ={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component ={Register} options={{ headerShown: false }} />
-          <Stack.Screen name="Home" component ={Home} options={{ headerShown: false }} />
+          <Stack.Screen name="MainScreen" component ={MainScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
 

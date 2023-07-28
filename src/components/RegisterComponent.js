@@ -5,7 +5,7 @@ import Color from '../untils/color';
 import untils from '../untils/untils';
 import AuthApi from '../api/AuthApi';
 import ManagerApi from '../api/ManagerApi';
-import InputSecure from "../components/InputSecure";
+import InputSecure from "./InputSecure";
 
 const Register = ({navigation}) => {
     const [name,setName] = useState("");
@@ -42,7 +42,7 @@ const Register = ({navigation}) => {
         .then(response => {
             if (response.data.status === true) {
                 setIsLoading(true)
-                navigation.navigate('Home')
+                // navigation.navigate('Home')
             }
         })
         .catch(error => {

@@ -8,9 +8,9 @@ import axios from 'axios';
 import AuthApi from '../api/AuthApi';
 import ManagerApi from '../api/ManagerApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import SuccessLoading from "./SuccessLoading"
+import SuccessLoading from "../screen/SuccessLoading"
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import InputSecure from '../components/InputSecure';
+import InputSecure from './InputSecure';
 
 
 
@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
                 if (response.data.status === true) {
                     AsyncStorage.setItem("AccessToken", response.data.data)
                     setIsLoading(true)
-                    navigation.replace('Home')
+                    navigation.replace('MainScreen')
                    
                 }
             })
@@ -61,11 +61,9 @@ const Login = ({ navigation }) => {
             });
         }
     }
-    // if (isLoading) {
-    //     return (
-    //         <SuccessLoading/>
-    //     )
-    // }
+    if (1) {
+        navigation.replace('MainScreen')
+    }
     return (
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
