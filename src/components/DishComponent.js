@@ -12,7 +12,7 @@ function DishComponent({imageDish,nameFood,nameRestaurantFood,price}) {
         <View className="basis-1/3">
             <Image source = {{ uri: `data:image/jpeg;base64,${imageDish}` }} className="object-cover h-16 w-20 left-4 " resizeMode="cover"/>
         </View>
-        <Text className = {`basis-1/3 text-[#292929] text-xl font-semibold`} >{nameRestaurantFood}</Text>
+        <Text className = {`basis-1/3 text-[#292929] text-xl font-semibold`} >{nameFood}</Text>
         <View className = "basis-1/3">
             <Text className={`${Color.textBlur} text-sm`}>{nameRestaurantFood}</Text>
             <Text className = {`text-[#000] text-base`}>{price} VND</Text>
