@@ -42,7 +42,7 @@ const Register = ({navigation}) => {
         .then(response => {
             if (response.data.status === true) {
                 setIsLoading(true)
-                // navigation.navigate('Home')
+                navigation.replace('HomeComponent')
             }
         })
         .catch(error => {

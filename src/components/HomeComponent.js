@@ -1,4 +1,5 @@
 import {View,Text, Image,ScrollView,TextInput,TouchableOpacity} from 'react-native'
+import React, { useEffect, useState } from 'react'
 import clock from '../assets/img/clock.png'
 import Color from '../untils/color'
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -6,12 +7,33 @@ import DishComponent from "./DishComponent"
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import untils from '../untils/untils';
 
-const [sm, md] = untils.calculateScreenSizes()
+import ManagerApi from '../api/ManagerApi';
+import UserApi from '../api/UserApi'
+
 
 const Tab = createMaterialBottomTabNavigator();
-
+const [sm, md] = untils.calculateScreenSizes()
 
 const Home = ()=>{
+    const [dataDish,setDataDish] =useState([{}])
+    useEffect(()=>{
+      const getFood=async ()=>{
+        console.log("********************************")
+        const response = await ManagerApi.get(UserApi.getRecommendFoodApi)
+        .then(response =>{
+            setDataDish(response.data.data)
+            console.log(dataDish[0]["price"])
+        })
+        .catch(err =>{
+            console.log("error:"+err)
+        })
+     
+      }
+      getFood()
+        
+    },[])
+ 
+
     return(
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
@@ -29,15 +51,19 @@ const Home = ()=>{
                 <Icon name={ 'search'} size={24} color="gray" />
                 </TouchableOpacity>
             </View>
-            <View className='mt-2'>
+            <View className='mt-3 flex-1'>
                 <Text className={`text-lg text-slate-950 font-semibold`}>Dành cho bạn: </Text>
-                <ScrollView className={`${sm ? 'h-52' : ''} ${md ? 'h-64' : ''}`}  showsVerticalScrollIndicator>
-                    <DishComponent/>
-                    <DishComponent/>
-                    <DishComponent/>
-                    <DishComponent/>
-                    <DishComponent/>
-                    <DishComponent/>
+                <ScrollView className={`${sm?"h-52":""} ${md?"h-68":""}`} >
+                    {dataDish.map((e,i)=>{
+                       return <DishComponent
+                        key ={e["id"]}          
+                        imageDish={e["imgFood"]}
+                        nameFood={e["nameFood"]}
+                        nameRestaurantFood={e["nameRestaurantFood"]}
+                        price={e["price"]}/>
+                    })}
+                 
+
                 </ScrollView>
             </View>
             <View>
@@ -54,13 +80,13 @@ const Home = ()=>{
                     </TouchableOpacity>
 
                 </View>
-                <View className={`${sm ? 'mt-6' : ''} ${md ? 'mt-56' : ''}`}>
+              
+            </View>
+            <View className={`${sm ? 'mt-6' : ''} ${md ? 'mt-14' : ''}`}>
                     <TouchableOpacity className="w-48 bg-neutral-200 px-4 py-3 rounded-3xl mt-4 bg-[#4e399e] mx-auto my-auto">
                         <Text className="text-white text-xl font-bold text-center">Ăn gì cũng được</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
-            
         </ScrollView>
     )
 }

@@ -11,17 +11,19 @@ const ManagerApi = axios.create({
   },
 });
 ManagerApi.interceptors.request.use(
-  // async (config) => {
-  //   // Kiểm tra và gắn token vào header nếu có
-  //   const token = AsyncStorage.getItem("AccessToken"); 
-  //   if (token) {
-  //     config.headers['Authorization'] = `Bearer ${token}`;
-  //   }
-  //   return config;
-  // },
-  // (error) => {
-  //   return Promise.reject(error);
-  // }
+  async (config) => {
+    // Kiểm tra và gắn token vào header nếu có
+    const token =await AsyncStorage.getItem("AccessToken"); 
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    console.log(config.headers)
+    console.log(config.url)
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 
