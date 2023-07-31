@@ -10,7 +10,6 @@ import untils from '../untils/untils';
 import ManagerApi from '../api/ManagerApi';
 import UserApi from '../api/UserApi'
 import SuccessLoading from '../screen/SuccessLoading';
-import MainScreen from '../screen/MainScreen';
 import Search from './SearchComponent';
 
 
@@ -39,13 +38,6 @@ const Home = ({navigation})=>{
       getFood()
     },[])
  
-    // if(isLoading){
-    //       return  <MainScreen isLoading={isLoading}/>
-    // }
-    if(1){
-        return <Search/>
-    }
-   
     return(
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
@@ -68,7 +60,7 @@ const Home = ({navigation})=>{
                 <ScrollView className={`${sm?"h-52":""} ${md?"h-68":""}`} >
                     {dataDish.map((e,i)=>{
                        return <DishComponent
-                        key ={e["id"]}          
+                        key ={i}          
                         imageDish={e["imgFood"]}
                         nameFood={e["nameFood"]}
                         nameRestaurantFood={e["nameRestaurantFood"]}

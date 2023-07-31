@@ -10,9 +10,9 @@ import {View} from 'react-native';
 const Tab = createMaterialBottomTabNavigator();
 
 function MainScreen({isLoading}) {
-  if (isLoading) {
-    return <SuccessLoading/>
-  }
+  // if (isLoading) {
+  //   return <SuccessLoading/>
+  // }
     return ( 
         <Tab.Navigator
         initialRouteName="SuccessLoading"

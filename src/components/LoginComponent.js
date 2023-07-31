@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputSecure from './InputSecure';
 import MainScreen from '../screen/MainScreen';
 import Search from './SearchComponent';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -22,8 +23,17 @@ const Login = ({ navigation }) => {
           try {
             const token = await AsyncStorage.getItem("AccessToken");
             if (token) {
+              const decodedToken = jwtDecode(token);
+              const expirationTimestamp = decodedToken.exp;
+              const currentTimestamp = Date.now() / 1000;
               console.log(token);
-              navigation.replace('MainScreen');
+              if (expirationTimestamp < currentTimestamp) {
+                // Mã thông báo đã hết hạn, xóa mã thông báo khỏi AsyncStorage
+                console.log("hết hạn");
+                await AsyncStorage.removeItem("AccessToken"); 
+              } else {
+                console.log("còn hạn");
+              }
             }
           } catch (error) {
             console.log("Error:", error);
@@ -40,12 +50,13 @@ const Login = ({ navigation }) => {
     const [sm, md] = untils.calculateScreenSizes()
     const [isLoading, setIsLoading] = useState(false);
     const [errForm,setErrForm] = useState(false);
+    const [errInValid,setErrInValid] = useState(false);
     const isLogin = true;
 
     const handleLogin = async () => {
         const urlApi = AuthApi.login
         setIsLoading(true)
-        if(errPass || errMasv){
+        if(errPass || errMasv ){
             setErrForm(true);
             setErrMessMasv("Mã sinh viên hoặc mật khẩu không hợp lệ");
             setErrMessPass("Mã sinh viên hoặc mật khẩu không hợp lệ");
@@ -61,13 +72,15 @@ const Login = ({ navigation }) => {
                     navigation.replace('MainScreen')
                     console.log('ahihi');
                     return 0;
+                }else{
+                    setErrInValid(true);
+                    setErrMessMasv("Tài khoản này không tồn tại");
+                    setErrMessPass("Tài khoản này không tồn tại");
+                    console.log('false');
+                    return 0;
                 }
             })
             .catch(()=>{
-                setErrPass(true);
-                setErrMasv(true);
-                setErrMessMasv("Tài khoản này không tồn tại");
-                setErrMessPass("Tài khoản này không tồn tại");
                 console.log("error");
             });
         }
@@ -84,18 +97,19 @@ const Login = ({ navigation }) => {
                 <Text className='font-bold text-base ${Color.textBold}'>Mã sinh viên: </Text>
                 <TextInput
                     placeholder='Nhập mã sinh viên'
-                    className={`placeholder:text-slate-400 block bg-white w-full border ${errForm ? "border-[#ed1818]" : "border-slate-300"}  rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 sm:text-sm`}
+                    className={`placeholder:text-slate-400 block bg-white w-full border ${(errForm || errInValid) ? "border-[#ed1818]" : "border-slate-300"}  rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 sm:text-sm`}
                     onChangeText={(e) => {
                         untils.validateMaSV(e, setErrMessMasv, setErrMasv);
-                        setMaSv(e)
+                        setMaSv(e.trim())
                         setErrForm(false);
+                        setErrInValid(false);
                     }}
                     value={maSv}
                 />
-                <Text className='text-[#ed1818]'>{errForm ?  errMessMasv : ""}</Text>
+                <Text className='text-[#ed1818]'>{(errForm || errInValid) ?  errMessMasv : ""}</Text>
                 
                 <Text className='font-bold text-base ${Color.textBold}'>Mật khẩu: </Text>
-                <InputSecure placeholder={"Nhập mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err ={errPass} errMess={errMessPass} value={pass}  setValue={setPass} errForm={errForm} setErrForm={setErrForm} isLogin={isLogin}/>
+                <InputSecure placeholder={"Nhập mật khẩu"} setErrMess={setErrMessPass} setErr={setErrPass} err ={errPass} errMess={errMessPass} value={pass}  setValue={setPass} errForm={errForm} setErrForm={setErrForm} isLogin={isLogin} setErrInValid={setErrInValid} errInValid={errInValid}/>
             </View>
 
             <View className={`flex items-center justify-center `}>
