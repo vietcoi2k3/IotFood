@@ -11,6 +11,7 @@ import ManagerApi from '../api/ManagerApi';
 import UserApi from '../api/UserApi'
 import SuccessLoading from '../screen/SuccessLoading';
 import MainScreen from '../screen/MainScreen';
+import Search from './SearchComponent';
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -41,6 +42,9 @@ const Home = ({navigation})=>{
     // if(isLoading){
     //       return  <MainScreen isLoading={isLoading}/>
     // }
+    if(1){
+        return <Search/>
+    }
    
     return(
         <ScrollView className='mx-4 my-4 flex-1'>

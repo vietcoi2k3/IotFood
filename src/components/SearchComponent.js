@@ -23,16 +23,16 @@ function Search() {
                     <Icon name={ 'search'} size={24} color="gray" />
             </TouchableOpacity>
         </View>
-        <Text className={`text-lg text-slate-950 font-semibold`}>Phân loại:</Text>
-        <View className="flex flex-row gap-2 whitespace-pre-wrap">
+        <Text className={`text-lg text-slate-950 font-semibold mt-2`}>Phân loại:</Text>
+        <View className="flex flex-row flex-wrap gap-y-2 mt-2">
             {typeFood.map((type,index)=>{
-                return (<TouchableOpacity className="w-48 bg-neutral-200 px-2 py-3 rounded-3xl mt-4 mx-auto my-auto " key={index}>
+                return (<TouchableOpacity className="w-48 bg-neutral-200 rounded-3xl mt-4 mx-auto my-auto w-5/12 p-2" key={index}>
                             <Text className={`${Color.textBold} text-base font-bold text-center`}>{type}</Text>
                         </TouchableOpacity>)
             })}
                
         </View>
-        <View className={`${sm ? 'mt-48' : ''} ${md ? 'mt-14' : ''}`}>
+        <View className={`${sm ? 'mt-40' : ''} ${md ? 'mt-14' : ''}`}>
             <TouchableOpacity className="w-48 bg-neutral-200 px-4 py-3 rounded-3xl mt-4 bg-[#4e399e] mx-auto my-auto">
                 <Text className="text-white text-xl font-bold text-center">Ăn gì cũng được</Text>
             </TouchableOpacity>
