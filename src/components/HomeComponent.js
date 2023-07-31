@@ -10,21 +10,26 @@ import untils from '../untils/untils';
 import ManagerApi from '../api/ManagerApi';
 import UserApi from '../api/UserApi'
 import SuccessLoading from '../screen/SuccessLoading';
+import MainScreen from '../screen/MainScreen';
 
 
 const Tab = createMaterialBottomTabNavigator();
 const [sm, md] = untils.calculateScreenSizes()
 
-const Home = ()=>{
+const Home = ({navigation})=>{
     const [isLoading , setIsLoading] = useState(true)
+    const [isHome, setIsHome] = useState(false);
     const [dataDish,setDataDish] =useState([{}])
+  
+
     useEffect(()=>{
       const getFood=async ()=>{
         console.log("********************************")
         const response = await ManagerApi.get(UserApi.getRecommendFoodApi)
         .then(response =>{
             setDataDish(response.data.data)
-            setIsLoading(false)
+            setIsLoading(false);
+            setIsHome(true);
         })
         .catch(err =>{
             console.log("error:"+err)
@@ -33,12 +38,10 @@ const Home = ()=>{
       getFood()
     },[])
  
-    if(isLoading){
-        return (
-            <SuccessLoading/>
-        )
-    }
-
+    // if(isLoading){
+    //       return  <MainScreen isLoading={isLoading}/>
+    // }
+   
     return(
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>

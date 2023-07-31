@@ -36,13 +36,13 @@ const Register = ({navigation}) => {
            "username": maSv,
            "password": pass,
            "sdt" : phone,
-           "AccountName": name
+           "accountName": name
         }
         ManagerApi.post(apiUrl,dataToSend)
         .then(response => {
             if (response.data.status === true) {
                 setIsLoading(true)
-                navigation.replace('HomeComponent')
+                navigation.replace('MainScreen')
             }
         })
         .catch(error => {

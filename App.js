@@ -20,6 +20,7 @@ import Home from "./src/components/HomeComponent"
 
 import Color from './src/untils/color'
 import MainScreen from './src/screen/MainScreen';
+import SuccessLoading from './src/screen/SuccessLoading';
 
 
 
@@ -31,6 +32,7 @@ const App = () => {
       <Stack.Navigator>
           <Stack.Screen name="Login" component ={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Register" component ={Register} options={{ headerShown: false }} />
+          <Stack.Screen name='SuccessLoading' component={SuccessLoading} options={{headerShown: false}}/>
           <Stack.Screen name="MainScreen" component ={MainScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>

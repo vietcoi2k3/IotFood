@@ -11,6 +11,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SuccessLoading from "../screen/SuccessLoading"
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputSecure from './InputSecure';
+import MainScreen from '../screen/MainScreen';
+import Search from './SearchComponent';
 
 
 
@@ -57,6 +59,7 @@ const Login = ({ navigation }) => {
                 if (response.data.status === true) {
                     await AsyncStorage.setItem("AccessToken", response.data.data)
                     navigation.replace('MainScreen')
+                    console.log('ahihi');
                     return 0;
                 }
             })
@@ -65,9 +68,11 @@ const Login = ({ navigation }) => {
                 setErrMasv(true);
                 setErrMessMasv("Tài khoản này không tồn tại");
                 setErrMessPass("Tài khoản này không tồn tại");
+                console.log("error");
             });
         }
     }
+   
     return (
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
