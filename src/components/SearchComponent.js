@@ -6,7 +6,7 @@ import untils from '../untils/untils';
 
 const [sm, md] = untils.calculateScreenSizes()
 const typeFood = ['Phở, bún, miến', 'Bánh mì', 'Đồ ăn vặt', 'Trà sữa, cà phê', 'Đồ cuốn','Bánh ngọt']
-function Search() {
+function Search({navigation}) {
     return (    
     <ScrollView className='mx-4 my-4 flex-1'>
         <View className='mx-auto my-auto underline'>
@@ -19,7 +19,9 @@ function Search() {
                 className={`placeholder:text-slate-950 block bg-neutral-200 w-full border  border-slate-300 rounded-3xl py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 text-base`}
             />
             <TouchableOpacity
-                className='absolute right-2 top-3.5'>
+                className='absolute right-2 top-3.5'
+                onPress ={()=> navigation.navigate("Result")}
+            >
                     <Icon name={ 'search'} size={24} color="gray" />
             </TouchableOpacity>
         </View>

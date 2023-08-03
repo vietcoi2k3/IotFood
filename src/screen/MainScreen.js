@@ -6,27 +6,33 @@ import CartComponent from '../components/CartComponent'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SuccessLoading from './SuccessLoading';
 import {View} from 'react-native';
+import HomeScreen from './HomeScreen';
+import { useState,useEffect } from 'react';
 
 const Tab = createMaterialBottomTabNavigator();
 
-function MainScreen({isLoading}) {
-  // if (isLoading) {
-  //   return <SuccessLoading/>
-  // }
+function MainScreen({}) {
+    // const [isLoading,setIsLoading] = useState(true);
+    // const handleDataFromChild = (data)=>{
+    //     console.log("2");
+    //     console.log("data nhan"+ data)
+    //     setIsLoading(data);
+    // }
     return ( 
         <Tab.Navigator
-        initialRouteName="SuccessLoading"
         activeColor="#4e399e"
         barStyle={{backgroundColor: "rgb(229 ,229,229)",height: 48 }}
       >
         <Tab.Screen
-          name="Home"
-          component={Home}
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
             tabBarIcon: ({ color }) => (
               <Icon name="home" color={color} size={26} />
             ),
+            tabBarStyle: { display: 'none' }
           }}
+          // initialParams={{ onDataReceived: handleDataFromChild }}
         />
          <Tab.Screen
           name = 'Cart'
@@ -44,6 +50,7 @@ function MainScreen({isLoading}) {
             tabBarIcon: ({ color }) => (
               <Icon name="notifications" color={color} size={26} />
             ),
+            tabBarStyle: { display: 'none' }
           }}
         />
         <Tab.Screen

@@ -6,21 +6,20 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import DishComponent from "./DishComponent"
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import untils from '../untils/untils';
-
 import ManagerApi from '../api/ManagerApi';
 import UserApi from '../api/UserApi'
 import SuccessLoading from '../screen/SuccessLoading';
 import Search from './SearchComponent';
+import Result from './ResultComponent';
 
 
-const Tab = createMaterialBottomTabNavigator();
 const [sm, md] = untils.calculateScreenSizes()
 
-const Home = ({navigation})=>{
+const Home = ({navigation,route})=>{
     const [isLoading , setIsLoading] = useState(true)
     const [isHome, setIsHome] = useState(false);
     const [dataDish,setDataDish] =useState([{}])
-  
+    // const { onDataReceived } = route.params; 
 
     useEffect(()=>{
       const getFood=async ()=>{
@@ -37,7 +36,12 @@ const Home = ({navigation})=>{
       }
       getFood()
     },[])
- 
+
+    // useEffect(() => {
+    //  // Gọi hàm callback để truyền dữ liệu về TabNavigator (màn hình cha)
+    //     onDataReceived(isLoading);
+    //   }, [onDataReceived]);
+
     return(
         <ScrollView className='mx-4 my-4 flex-1'>
             <View className='mx-auto my-auto underline'>
@@ -48,6 +52,8 @@ const Home = ({navigation})=>{
                 <TextInput
                     placeholder={"Tìm kiếm"}
                     className={`placeholder:text-slate-950 block bg-neutral-200 w-full border  border-slate-300 rounded-3xl py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 text-base`}
+                    onFocus={()=>{navigation.navigate('HomeScreen', {
+                        screen: 'Search'})}}
                 />
                 <TouchableOpacity
                     className='absolute right-2 top-3.5'

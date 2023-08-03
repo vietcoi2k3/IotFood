@@ -4,16 +4,13 @@ import myImage from '../assets/img/Group_4.png'
 import Color from '../untils/color'
 import untils from '../untils/untils'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import AuthApi from '../api/AuthApi';
 import ManagerApi from '../api/ManagerApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import SuccessLoading from "../screen/SuccessLoading"
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputSecure from './InputSecure';
 import MainScreen from '../screen/MainScreen';
-import Search from './SearchComponent';
 import jwtDecode from 'jwt-decode';
+
 
 
 
@@ -52,6 +49,7 @@ const Login = ({ navigation }) => {
     const [errForm,setErrForm] = useState(false);
     const [errInValid,setErrInValid] = useState(false);
     const isLogin = true;
+    
 
     const handleLogin = async () => {
         const urlApi = AuthApi.login
@@ -69,8 +67,8 @@ const Login = ({ navigation }) => {
             .then(async( response) => {
                 if (response.data.status === true) {
                     await AsyncStorage.setItem("AccessToken", response.data.data)
-                    navigation.replace('MainScreen')
-                    console.log('ahihi');
+                    navigation.replace('MainScreen');
+                    console.log("Dang nhap thanh cong")
                     return 0;
                 }else{
                     setErrInValid(true);
@@ -85,9 +83,8 @@ const Login = ({ navigation }) => {
             });
         }
     }
-   
     return (
-        <ScrollView className='mx-4 my-4 flex-1'>
+        <ScrollView className='mx-4 my-4 flex-1' >
             <View className='mx-auto my-auto underline'>
                 <Image source={myImage} className='object-cover rounded-full' />
                 <Text className={` font-bold text-4xl ${Color.textBold}`}>Chào Mừng!</Text>
