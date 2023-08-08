@@ -15,15 +15,15 @@ function Restaurant({navigation}) {
                 <Image source={clock} className='object-cover rounded-full mx-auto my-auto ' />
                 <Text className={` font-bold text-3xl ${Color.textBold}`}>Bún 80 Linh Đàm</Text>
             </View>
-            {/* <View className="flex flex-row mt-4"> */}
-            {/* <View className="basis-1/3">
+            <View className="flex flex-row mt-4 justify-between">
+            <View className="basis-1/4">
                 <TouchableOpacity className="bg-neutral-200 py-4 px-2 rounded-3xl"
-                                  onPress={navigation.goBack()}
+                                  onPress={()=>navigation.goBack()}
                 >
-                    <Text className={`${Color.textBold} text-slate-950 font-semibold`}>Quay về</Text>
+                    <Text className={`${Color.textBold} text-center font-semibold`}>Quay về</Text>
                 </TouchableOpacity>
-            </View> */}
-                <View className='relative mt-4'>
+            </View>
+                <View className='relative  basis-2/3'>
                     <TextInput
                         placeholder={"Tìm kiếm trong quán"}
                         className={`placeholder:text-slate-950 block bg-neutral-200 w-full border  border-slate-300 rounded-3xl py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 text-base`}
@@ -33,7 +33,7 @@ function Restaurant({navigation}) {
                             <Icon name={ 'search'} size={24} color="gray" />
                     </TouchableOpacity>
             </View >
-            {/* </View> */}
+            </View>
     
                     
             <View className="flex flex-row gap-2 items-center justify-between mt-4">
