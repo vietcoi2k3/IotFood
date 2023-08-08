@@ -63,10 +63,11 @@ const Login = ({ navigation }) => {
             "username": maSv,
             "password": pass,
         }
+        console.log(dataToSend)
         const response = ManagerApi.post(urlApi, dataToSend)
             .then(async( response) => {
                 if (response.data.status === true) {
-                    await AsyncStorage.setItem("AccessToken", response.data.data)
+                    await AsyncStorage.setItem("AccessToken", response.data.data.token)
                     navigation.replace('MainScreen');
                     console.log("Dang nhap thanh cong")
                     return 0;

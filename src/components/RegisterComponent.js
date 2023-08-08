@@ -30,6 +30,7 @@ const Register = ({navigation}) => {
     const[sm,md]=untils.calculateScreenSizes()
 
     const handleRegister = async ()=>{
+        console.log("aaaaaaaaaaaaaaaa")
         if(!errMasv && !errPass && !errPhone && !errCfPass){
         const apiUrl = AuthApi.register
         const dataToSend = {
