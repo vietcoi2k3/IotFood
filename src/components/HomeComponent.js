@@ -63,7 +63,7 @@ const Home = ({navigation,route})=>{
             </View>
             <View className='mt-3 flex-1'>
                 <Text className={`text-lg text-slate-950 font-semibold`}>Dành cho bạn: </Text>
-                <ScrollView className={`${sm?"h-52":""} ${md?"h-68":""}`} >
+                <ScrollView className={`${sm?"h-52":""} ${md?"h-64":""}`} >
                     {dataDish.map((e,i)=>{
                        return <DishComponent
                         key ={i}          
@@ -72,8 +72,6 @@ const Home = ({navigation,route})=>{
                         nameRestaurantFood={e["nameRestaurantFood"]}
                         price={e["price"]}/>
                     })}
-                 
-
                 </ScrollView>
             </View>
             <View>
