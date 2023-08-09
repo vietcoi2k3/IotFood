@@ -2,15 +2,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {View,Text,Image,TouchableOpacity} from "react-native"
 import { Button } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
-import Info from "../assets/img/Info.png";
-import ImageInfo from "../assets/img/ImageInfo.png"
-import Color from "../untils/color";
+import Info from "../../assets/img/Info.png";
+import ImageInfo from "../../assets/img/ImageInfo.png"
+import Color from "../../untils/color";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import untils from "../untils/untils";
-import UserApi from '../api/UserApi'
+import untils from "../../untils/untils";
+import UserApi from '../../api/UserApi'
 import React,{useEffect,useState} from "react"
-import AuthApi from '../api/AuthApi';
-import ManagerApi from '../api/ManagerApi';
+import AuthApi from '../../api/AuthApi';
+import ManagerApi from '../../api/ManagerApi';
 
 
 const [sm, md] = untils.calculateScreenSizes()

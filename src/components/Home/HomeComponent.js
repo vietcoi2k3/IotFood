@@ -1,16 +1,14 @@
 import {View,Text, Image,ScrollView,TextInput,TouchableOpacity} from 'react-native'
 import React, { useEffect, useState } from 'react'
-import clock from '../assets/img/clock.png'
-import Color from '../untils/color'
+import clock from "../../assets/img/clock.png"
+import Color from '../../untils/color'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import DishComponent from "./DishComponent"
+import DishComponent from "../Extra/DishComponent"
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import untils from '../untils/untils';
-import ManagerApi from '../api/ManagerApi';
-import UserApi from '../api/UserApi'
-import SuccessLoading from '../screen/SuccessLoading';
-import Search from './SearchComponent';
-import Result from './ResultComponent';
+import untils from '../../untils/untils';
+import ManagerApi from '../../api/ManagerApi';
+import UserApi from '../../api/UserApi'
+
 
 
 const [sm, md] = untils.calculateScreenSizes()
@@ -19,7 +17,7 @@ const Home = ({navigation,route})=>{
     const [isLoading , setIsLoading] = useState(true)
     const [isHome, setIsHome] = useState(false);
     const [dataDish,setDataDish] =useState([{}])
-    // const { onDataReceived } = route.params; 
+   
 
     useEffect(()=>{
       const getFood=async ()=>{
@@ -37,10 +35,6 @@ const Home = ({navigation,route})=>{
       getFood()
     },[])
 
-    // useEffect(() => {
-    //  // Gọi hàm callback để truyền dữ liệu về TabNavigator (màn hình cha)
-    //     onDataReceived(isLoading);
-    //   }, [onDataReceived]);
 
     return(
         <ScrollView className='mx-4 my-4 flex-1'>

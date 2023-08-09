@@ -1,8 +1,8 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Home from '../components/HomeComponent';
-import ProfileComponent from '../components/ProfileComponent';
-import Notifications from '../components/NotificationsComponent';
-import CartComponent from '../components/CartComponent'
+import Home from '../components/Home/HomeComponent';
+import ProfileComponent from '../components/Profile/ProfileComponent';
+import Notifications from '../components/Notification/NotificationsComponent';
+import CartComponent from '../components/Cart/CartComponent'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SuccessLoading from './SuccessLoading';
 import {View} from 'react-native';
@@ -12,12 +12,7 @@ import { useState,useEffect } from 'react';
 const Tab = createMaterialBottomTabNavigator();
 
 function MainScreen({}) {
-    // const [isLoading,setIsLoading] = useState(true);
-    // const handleDataFromChild = (data)=>{
-    //     console.log("2");
-    //     console.log("data nhan"+ data)
-    //     setIsLoading(data);
-    // }
+    
     return ( 
         <Tab.Navigator
         activeColor="#4e399e"

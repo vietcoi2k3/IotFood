@@ -1,11 +1,11 @@
 import {View,ScrollView,Text,Image,TextInput,TouchableOpacity} from 'react-native'
-import clock from '../assets/img/clock.png'
-import Color from '../untils/color';
+import clock from "../../assets/img/clock.png"
+import Color from '../../untils/color';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Pho from "../assets/img/Pho.png"
+import Pho from "../../assets/img/Pho.png";
 
-import untils from '../untils/untils';
-import DishComponent from './DishComponent';
+import untils from '../../untils/untils';
+import DishComponent from '../Extra/DishComponent';
 
 const [sm, md] = untils.calculateScreenSizes()
 function Restaurant({navigation}) {
@@ -43,7 +43,9 @@ function Restaurant({navigation}) {
                     <TouchableOpacity className="bg-neutral-200 px-8 py-3 rounded-3xl">
                         <Text className="text-center">Ưu đãi</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="bg-neutral-200 px-8 py-3 rounded-3xl">
+                    <TouchableOpacity className="bg-neutral-200 px-8 py-3 rounded-3xl"
+                                      onPress={()=>navigation.navigate("Rating")}
+                    >
                         <Text className="text-center">Đánh giá</Text>
                 </TouchableOpacity>
             </View>

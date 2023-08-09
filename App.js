@@ -14,14 +14,14 @@ import 'react-native-gesture-handler'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from './src/components/LoginComponent';
-import Register from './src/components/RegisterComponent';
-import Home from "./src/components/HomeComponent"
+import Login from './src/components/Login/LoginComponent';
+import Register from './src/components/Register/RegisterComponent';
+import Home from "./src/components/Home/HomeComponent"
 
 import Color from './src/untils/color'
 import MainScreen from './src/screen/MainScreen';
 import SuccessLoading from './src/screen/SuccessLoading';
-import Search from "./src/components/SearchComponent";
+import Search from "./src/components/Home/SearchComponent";
 
 
 

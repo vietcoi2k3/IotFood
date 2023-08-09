@@ -1,12 +1,30 @@
 import {View,ScrollView,Text,Image,TextInput,TouchableOpacity} from 'react-native'
-import clock from '../assets/img/clock.png'
-import Color from '../untils/color';
+import clock from "../../assets/img/clock.png"
+import Color from '../../untils/color';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import untils from '../untils/untils';
+import untils from '../../untils/untils';
+import { useEffect, useRef,useLayoutEffect, useState} from 'react';
+import ManagerApi from '../../api/ManagerApi';
+import UserApi from '../../api/UserApi';
 
 const [sm, md] = untils.calculateScreenSizes()
-const typeFood = ['Phở, bún, miến', 'Bánh mì', 'Đồ ăn vặt', 'Trà sữa, cà phê', 'Đồ cuốn','Bánh ngọt']
+
 function Search({navigation}) {
+    const [nameTypes, setNameTypes] = useState([]);
+    useEffect(() => {
+        const getType = async () => {
+          try {
+            const response = await ManagerApi.get(UserApi.getAllType);
+            const typesData = response.data.data.map(type => type.nameType);
+            setNameTypes(typesData);
+          } catch (error) {
+            console.log("error: " + error);
+          }
+        };
+      
+        getType();
+      }, [])
+      
     return (    
     <ScrollView className='mx-4 my-4 flex-1'>
         <View className='mx-auto my-auto underline'>
@@ -27,7 +45,7 @@ function Search({navigation}) {
         </View>
         <Text className={`text-lg text-slate-950 font-semibold mt-2`}>Phân loại:</Text>
         <View className="flex flex-row flex-wrap gap-y-2 mt-2">
-            {typeFood.map((type,index)=>{
+            {nameTypes.map((type,index)=>{
                 return (<TouchableOpacity className="w-48 bg-neutral-200 rounded-3xl mt-4 mx-auto my-auto w-5/12 p-2" key={index}>
                             <Text className={`${Color.textBold} text-base font-bold text-center`}>{type}</Text>
                         </TouchableOpacity>)

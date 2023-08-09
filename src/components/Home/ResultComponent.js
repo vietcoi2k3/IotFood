@@ -1,11 +1,11 @@
 import {View,ScrollView,Text,Image,TextInput,TouchableOpacity} from 'react-native'
-import clock from '../assets/img/clock.png'
-import Color from '../untils/color';
+import clock from "../../assets/img/clock.png"
+import Color from '../../untils/color';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Pho from "../assets/img/Pho.png"
+import Pho from "../../assets/img/Pho.png"
 
-import untils from '../untils/untils';
-import DishComponent from './DishComponent';
+import untils from '../../untils/untils';
+import DishComponent from '../Extra/DishComponent';
 
 const [sm, md] = untils.calculateScreenSizes()
 function Result({navigation}) {

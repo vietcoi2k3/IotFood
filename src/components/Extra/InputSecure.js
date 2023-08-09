@@ -1,7 +1,7 @@
 import {View,TextInput,TouchableOpacity,Text} from "react-native"
 import {useState} from "react"
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import untils from "../untils/untils";
+import untils from "../../untils/untils";
 
 const InputSecure = ({placeholder,setErrMess,setErr,err,errMess,value,setValue,errForm = false,setErrForm = ()=>{} ,isLogin,setErrInValid=()=>{},errInValid = false,...props})=>{
     const [hidePassword,setHidePassword] = useState(false)

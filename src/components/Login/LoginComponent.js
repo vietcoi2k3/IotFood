@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet, Image, TextInput, ScrollView, Button, TouchableOpacity, Dimensions } from 'react-native';
 import 'react-native-gesture-handler'
-import myImage from '../assets/img/Group_4.png'
-import Color from '../untils/color'
-import untils from '../untils/untils'
+import myImage from '../../assets/img/Group_4.png'
+import Color from '../../untils/color'
+import untils from '../../untils/untils'
 import React, { useEffect, useState } from 'react'
-import AuthApi from '../api/AuthApi';
-import ManagerApi from '../api/ManagerApi';
+import AuthApi from '../../api/AuthApi';
+import ManagerApi from '../../api/ManagerApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import InputSecure from './InputSecure';
-import MainScreen from '../screen/MainScreen';
+import InputSecure from '../Extra/InputSecure';
+import MainScreen from '../../screen/MainScreen';
 import jwtDecode from 'jwt-decode';
 
 
@@ -29,6 +29,7 @@ const Login = ({ navigation }) => {
                 console.log("hết hạn");
                 await AsyncStorage.removeItem("AccessToken"); 
               } else {
+                navigation.replace("MainScreen");
                 console.log("còn hạn");
               }
             }

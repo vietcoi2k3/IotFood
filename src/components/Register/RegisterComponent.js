@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { View, Text, Image, TouchableOpacity, TextInput,ScrollView } from 'react-native';
-import myImage from '../assets/img/Group_4.png';
-import Color from '../untils/color';
-import untils from '../untils/untils';
-import AuthApi from '../api/AuthApi';
-import ManagerApi from '../api/ManagerApi';
-import InputSecure from "./InputSecure";
+import myImage from '../../assets/img/Group_4.png';
+import Color from '../../untils/color';
+import untils from '../../untils/untils';
+import AuthApi from '../../api/AuthApi';
+import ManagerApi from '../../api/ManagerApi';
+import InputSecure from "../Extra/InputSecure";
 
 const Register = ({navigation}) => {
     const [name,setName] = useState("");
