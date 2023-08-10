@@ -48,60 +48,68 @@ function Rating({navigation}) {
         </TouchableOpacity>
     </View>
 
-    <ScrollView className="h-52 mt-4 shadow-md shadow-purple-400">
-        <View className="flex items-start bg-neutral-200 rounded-xl max-h-20 mb-2 px-4">
-            <View className="flex flex-row justify-between">
-            <Text className={`text-base text-slate-950 font-normal`}>Camapbeo</Text>
-            <StarRating
-                disabled={true} // Không cho người dùng thay đổi đánh giá
-                maxStars={5} // Số sao tối đa
-                rating={4.5} // Điểm đánh giá
-                fullStarColor={'gold'} // Màu sao đầy
-                emptyStarColor={'gray'} // Màu sao rỗng
-                starSize={16}
-            />
-            </View>
-            <Text className="text-sm">Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
-        </View> 
-
-        <View className="flex items-start bg-neutral-200 rounded-xl max-h-20 mb-2 px-4">
-            <Text className={`text-base text-slate-950 font-normal`}>Camapbeo</Text>
-            <StarRating
-                disabled={true} // Không cho người dùng thay đổi đánh giá
-                maxStars={5} // Số sao tối đa
-                rating={4.5} // Điểm đánh giá
-                fullStarColor={'gold'} // Màu sao đầy
-                emptyStarColor={'gray'} // Màu sao rỗng
-                starSize={16}
-            />
-            <Text>Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
-        </View> 
-
-        <View className="flex items-start bg-neutral-200 rounded-xl max-h-20 mb-2 px-4">
-            <Text className={`text-base text-slate-950 font-normal`}>Camapbeo</Text>
-            <StarRating
-                disabled={true} // Không cho người dùng thay đổi đánh giá
-                maxStars={5} // Số sao tối đa
-                rating={4.5} // Điểm đánh giá
-                fullStarColor={'gold'} // Màu sao đầy
-                emptyStarColor={'gray'} // Màu sao rỗng
-                starSize={16}
-            />
-            <Text>Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
-        </View> 
-
-        <View className="flex items-start bg-neutral-200 rounded-xl max-h-20 mb-2 px-4">
-            <Text className={`text-base text-slate-950 font-normal`}>Camapbeo</Text>
-            <StarRating
-                disabled={true} // Không cho người dùng thay đổi đánh giá
-                maxStars={5} // Số sao tối đa
-                rating={4.5} // Điểm đánh giá
-                fullStarColor={'gold'} // Màu sao đầy
-                emptyStarColor={'gray'} // Màu sao rỗng
-                starSize={16}
-            />
-            <Text>Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
-        </View> 
+    <ScrollView className="h-52 mt-4">
+            <View className="flex items-start bg-neutral-200 rounded-xl mb-2 px-4 py-2 shadow-md shadow-purple-400">
+                <View className="flex flex-row items-center justify-center justify-between">
+                    <Text className={`text-base text-slate-950 font-normal mr-4`}>Camapbeo</Text>
+                    <StarRating
+                        disabled={true} // Không cho người dùng thay đổi đánh giá
+                        maxStars={5} // Số sao tối đa
+                        rating={4.5} // Điểm đánh giá
+                        fullStarColor={'gold'} // Màu sao đầy
+                        emptyStarColor={'gray'} // Màu sao rỗng
+                        starSize={16}
+                    
+                    />
+                </View>
+                <Text className="text-sm mt-1">Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
+            </View> 
+            <View className="flex items-start bg-neutral-200 rounded-xl mb-2 px-4 py-2 shadow-md shadow-purple-400">
+                <View className="flex flex-row items-center justify-center justify-between">
+                    <Text className={`text-base text-slate-950 font-normal mr-4`}>Camapbeo</Text>
+                    <StarRating
+                        disabled={true} // Không cho người dùng thay đổi đánh giá
+                        maxStars={5} // Số sao tối đa
+                        rating={4.5} // Điểm đánh giá
+                        fullStarColor={'gold'} // Màu sao đầy
+                        emptyStarColor={'gray'} // Màu sao rỗng
+                        starSize={16}
+                    
+                    />
+                </View>
+                <Text className="text-sm mt-1">Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
+            </View> 
+            <View className="flex items-start bg-neutral-200 rounded-xl mb-2 px-4 py-2 shadow-md shadow-purple-400">
+                <View className="flex flex-row items-center justify-center justify-between">
+                    <Text className={`text-base text-slate-950 font-normal mr-4`}>Camapbeo</Text>
+                    <StarRating
+                        disabled={true} // Không cho người dùng thay đổi đánh giá
+                        maxStars={5} // Số sao tối đa
+                        rating={4.5} // Điểm đánh giá
+                        fullStarColor={'gold'} // Màu sao đầy
+                        emptyStarColor={'gray'} // Màu sao rỗng
+                        starSize={16}
+                    
+                    />
+                </View>
+                <Text className="text-sm mt-1">Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
+            </View> 
+            <View className="flex items-start bg-neutral-200 rounded-xl mb-2 px-4 py-2 shadow-md shadow-purple-400">
+                <View className="flex flex-row items-center justify-center justify-between">
+                    <Text className={`text-base text-slate-950 font-normal mr-4`}>Camapbeo</Text>
+                    <StarRating
+                        disabled={true} // Không cho người dùng thay đổi đánh giá
+                        maxStars={5} // Số sao tối đa
+                        rating={4.5} // Điểm đánh giá
+                        fullStarColor={'gold'} // Màu sao đầy
+                        emptyStarColor={'gray'} // Màu sao rỗng
+                        starSize={16}
+                    
+                    />
+                </View>
+                <Text className="text-sm mt-1">Nước chấm ngon, bún mềm, rau sống tơi. Tóm lại 10 điểm không có nhưng</Text>
+            </View> 
+      
     </ScrollView>
     <View className={"mt-2"}>
         <Text className={`${sm ? 'mt-8' : ''} ${md ? 'mt-6' : ''} text-slate-950 mx-auto`}>1.5km|4.5sao|25khach</Text>
@@ -112,6 +120,7 @@ function Rating({navigation}) {
         <Text className="text-white text-xl font-bold text-center">Đặt đơn</Text>
     </TouchableOpacity>
     </View>
+    
 </ScrollView> );
 }
 

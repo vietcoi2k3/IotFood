@@ -6,6 +6,7 @@ import untils from '../../untils/untils';
 import AuthApi from '../../api/AuthApi';
 import ManagerApi from '../../api/ManagerApi';
 import InputSecure from "../Extra/InputSecure";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Register = ({navigation}) => {
     const [name,setName] = useState("");
@@ -29,8 +30,8 @@ const Register = ({navigation}) => {
 
     const[sm,md]=untils.calculateScreenSizes()
 
-    const handleRegister = async ()=>{
-        console.log("aaaaaaaaaaaaaaaa")
+    const handleRegister = async()=>{
+    
         if(!errMasv && !errPass && !errPhone && !errCfPass){
         const apiUrl = AuthApi.register
         const dataToSend = {
@@ -40,10 +41,12 @@ const Register = ({navigation}) => {
            "accountName": name
         }
         ManagerApi.post(apiUrl,dataToSend)
-        .then(response => {
+        .then(async (response) => {
             if (response.data.status === true) {
+                await AsyncStorage.setItem("AccessToken", response.data.data.token)
                 setIsLoading(true)
                 navigation.replace('MainScreen')
+                console.log("ec");
             }
         })
         .catch(error => {
