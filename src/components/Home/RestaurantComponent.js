@@ -44,7 +44,7 @@ function Restaurant({navigation}) {
                         <Text className="text-center">Ưu đãi</Text>
                     </TouchableOpacity>
                     <TouchableOpacity className="bg-neutral-200 px-8 py-3 rounded-3xl"
-                                      onPress={()=>navigation.navigate("Rating")}
+                                    //   onPress={()=>navigation.navigate("Rating")}
                     >
                         <Text className="text-center">Đánh giá</Text>
                 </TouchableOpacity>

@@ -3,14 +3,17 @@ import clock from "../../assets/img/clock.png"
 import Color from '../../untils/color';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import untils from '../../untils/untils';
-import { useEffect, useRef,useLayoutEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import ManagerApi from '../../api/ManagerApi';
 import UserApi from '../../api/UserApi';
+import Result from './ResultComponent';
 
 const [sm, md] = untils.calculateScreenSizes()
 
 function Search({navigation}) {
     const [nameTypes, setNameTypes] = useState([]);
+    const [valueSearch, setValueSearch] = useState("");
+
     useEffect(() => {
         const getType = async () => {
           try {
@@ -24,6 +27,23 @@ function Search({navigation}) {
       
         getType();
       }, [])
+
+      const handleSearch = async()=>{
+        try{
+        const response = await ManagerApi.get(UserApi.getSearchFood,
+            {
+                params: {
+                    searchString: "bún"
+                }
+            }
+        )
+        console.log(response.data);
+        navigation.navigate("Result");
+        }
+        catch (error) {
+            console.log(error);
+        }
+      }
       
     return (    
     <ScrollView className='mx-4 my-4 flex-1'>
@@ -35,10 +55,12 @@ function Search({navigation}) {
             <TextInput
                 placeholder={"Tìm kiếm"}
                 className={`placeholder:text-slate-950 block bg-neutral-200 w-full border  border-slate-300 rounded-3xl py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:'border-fuchsia-800'  focus:ring-sky-500 focus:ring-1 text-base`}
+                value={valueSearch}
+                onChange={(e)=>setValueSearch(e)}
             />
             <TouchableOpacity
                 className='absolute right-2 top-3.5'
-                onPress ={()=> navigation.navigate("Result")}
+                onPress ={handleSearch}
             >
                     <Icon name={ 'search'} size={24} color="gray" />
             </TouchableOpacity>

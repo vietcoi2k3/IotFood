@@ -3832,6 +3832,15 @@ deprecated-react-native-prop-types@4.1.0:
     invariant "*"
     prop-types "*"
 
+deprecated-react-native-prop-types@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/deprecated-react-native-prop-types/-/deprecated-react-native-prop-types-4.2.1.tgz#8cc990ff5319fec8306e7e8f30389a92978a7231"
+  integrity sha512-ef9AXisRrRhxuxd7d+noOEeGTtxIPVkfOQWf9WZUWuOqI+gs7P7hKTi49Rgb/dfvkmFULhwxO2UqAkH4nJsMfw==
+  dependencies:
+    "@react-native/normalize-colors" "*"
+    invariant "*"
+    prop-types "*"
+
 destroy@1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/destroy/-/destroy-1.2.0.tgz"
@@ -7763,6 +7772,11 @@ react-native-screens@^3.22.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-star-rating-widget@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/react-native-star-rating-widget/-/react-native-star-rating-widget-1.7.2.tgz#d082bd6a0b5276462f0e161ce7c7a70eaf84bdd9"
+  integrity sha512-FL0N5btdsarRcFqHrS9TkD+9jD5aadBkZJxF1O4KfhkNgAc1/ubquFodRTjwJHJb8JpCHs2FBUh1LQxcWZw7hw==
 
 react-native-star-rating@^1.1.0:
   version "1.1.0"
